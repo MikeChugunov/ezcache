@@ -20,6 +20,10 @@ inputs:
   script:
     description: 'Path to a script that installs dependencies, only valid for the "script" cache'
     required: false
+  invoke:
+    description: 'Specifies if script should be invoked, default "true"'
+    required: false
+    default: 'true'
 outputs:
   cache-hit:
     description: 'When "true", indicates an exact match was found for the key'

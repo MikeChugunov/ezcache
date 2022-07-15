@@ -2036,8 +2036,11 @@ class InstallScriptCache extends handler_1.CacheHandler {
             else {
                 throw Error(`Script not found: ${script}`);
             }
-            core.info(`Invoking installation script ${script}`);
-            await execa(script, [], { stdout: 'inherit', stderr: 'inherit' });
+            const needToInvoke = settings_1.inputs.getString('invoke') != 'false';
+            if (needToInvoke) {
+                core.info(`Invoking installation script ${script}`);
+                await execa(script, [], { stdout: 'inherit', stderr: 'inherit' });
+            }
         }
         return result;
     }
